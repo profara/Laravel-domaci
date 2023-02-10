@@ -18,8 +18,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/users', [UserController::class, 'index']);
+Route::get('/users/{id}', [UserController::class, 'show']);
+Route::get('/ads/{id}', [AdController::class, 'show']);
 
-// Route::get('/ads/{id}', [AdController::class, 'show']);
 // Route::get('/ads', [AdController::class, 'index']);
 
+Route::post('/ads', [AdController::class, 'store']);
+Route::delete('/ads/{id}', [AdController::class, 'destroy']);
+Route::patch('/ads/{id}', [AdController::class, 'update']);
 Route::resource('ads', AdController::class);
